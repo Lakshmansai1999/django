@@ -5,6 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'echo building'
+                sh 'pip3 install -r requirements.txt'
             }
         }
         
