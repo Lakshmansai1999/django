@@ -19,6 +19,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh 'echo deploying'
+                sh 'ssh lucky@192.168.1.24 -o StrictHostKeyChecking=no " bash /var/www/django/scripts/deploy.sh "'
             }
         }
     }
