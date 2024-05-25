@@ -9,7 +9,6 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'echo building'
-                sh 'cp env.example .env'
                 sh 'pip install -r requirements.txt'
             }
         }
