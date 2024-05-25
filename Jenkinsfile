@@ -23,7 +23,7 @@ pipeline {
             steps {
                 withCredentials([sshUserPrivateKey(credentialsId: SSH_KEY_ID, keyFileVariable: 'SSH_KEY_PATH', usernameVariable: 'SSH_USER')]) {
                     sh """
-                    ssh -i $SSH_KEY_PATH -o StrictHostKeyChecking=no $SSH_USER@192.168.1.24 bash /var/www/django/scripts/deploy.sh
+                    ssh -i $SSH_KEY_PATH -o StrictHostKeyChecking=no $SSH_USER@192.168.1.3 bash /var/www/django/scripts/deploy.sh
                     """
                 }
             }
