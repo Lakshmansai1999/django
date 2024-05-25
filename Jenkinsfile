@@ -9,16 +9,17 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'echo building'
+                sh 'cp env.example .env'
                 sh 'pip install -r requirements.txt'
             }
         }
-        
         stage('Test') {
             steps {
-                sh 'echo testing'
-                sh 'python3 manage.py test'
+               sh 'echo testing'
+               sh 'python3 manage.py test'
             }
         }
+
         stage('Deploy') {
             steps {
                 withCredentials([sshUserPrivateKey(credentialsId: SSH_KEY_ID, keyFileVariable: 'SSH_KEY_PATH', usernameVariable: 'SSH_USER')]) {
@@ -30,3 +31,4 @@ pipeline {
         }
     }
 }
+
